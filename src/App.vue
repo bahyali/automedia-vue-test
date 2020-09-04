@@ -1,22 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="inputs-container">
+      <NumberInput
+        v-for="(input, index) in inputs"
+        :key="index"
+        :defaultValue="input"
+        v-model="inputs[index]"
+      />
+    </div>
+    <button @click="addInput">{{total}}</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NumberInput from "./components/NumberInput.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    NumberInput,
+  },
+  data: function () {
+    return {
+      inputs: [5, 10, 15, 20, 50],
+    };
+  },
+  computed: {
+    total() {
+      return this.inputs.reduce((prev, current) => prev + current, 0);
+    },
+  },
+  methods: {
+    addInput() {
+      this.inputs.push(this.getRandomInt(1, 10));
+    },
+    getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    },
+  },
+};
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24,5 +49,16 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#inputs-container {
+  max-width: 322px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+button {
+  box-sizing: border-box;
+  width: 322px;
+  padding: 5px;
+  font-weight: bold;
 }
 </style>
