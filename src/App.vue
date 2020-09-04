@@ -51,13 +51,15 @@ export default {
   margin-top: 60px;
 }
 #inputs-container {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 322px;
   margin: 0 auto;
-  box-sizing: border-box;
 }
 button {
   box-sizing: border-box;
-  width: 322px;
+  width: 100%;
+  max-width: 322px;
   padding: 5px;
   font-weight: bold;
 }
