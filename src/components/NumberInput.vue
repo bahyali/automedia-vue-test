@@ -1,5 +1,5 @@
 <template>
-  <input type="number" v-model="value" @change="$emit('input', value ? parseInt(value):0)" />
+  <input type="number" v-model="value" @input="$emit('input', value ? parseInt(value):0)" />
 </template>
 
 <script>
