@@ -1,4 +1,4 @@
-# applicant-test
+# automedia-vue-test
 
 ## Project setup
 ```
